@@ -1,0 +1,25 @@
+{
+  "name": "foodstuff",
+  "version": "0.0.0",
+  "authors": [
+    "Sam Millar"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/millar/foodstuff",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "vendor/assets/components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "~1.3.9",
+    "angular-route": "~1.3.9",
+    "angular-resource": "~1.3.9",
+    "angular-animate": "~1.3.9",
+    "octicons": "~2.1.2",
+    "moment": "~2.9.0",
+    "livestampjs": "~1.1.2"
+  }
+}
