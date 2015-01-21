@@ -27,8 +27,8 @@ angular.module('app', window.$app.registry)
       }
     }])
 
-  .controller('MainController', ['$scope', '$rootScope', '$http',
-    function($scope, $rootScope, $http){
+  .controller('MainController', ['$scope', '$rootScope', '$http', '$location',
+    function($scope, $rootScope, $http, $location){
       $scope.logout = function(){
         $http.delete('/api/users/sign_out.json', {})
           .success(function(){

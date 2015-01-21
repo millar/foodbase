@@ -12,5 +12,5 @@ angular.module('home', [])
 
   .controller('DashboardIndexController', ['$scope',
     function($scope) {
-
+      $scope.requireLogin();
     }])
