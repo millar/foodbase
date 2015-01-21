@@ -27,12 +27,28 @@ angular.module('app', window.$app.registry)
       }
     }])
 
-  .controller('MainController', ['$scope',
-    function($scope){
+  .controller('MainController', ['$scope', '$rootScope', '$http',
+    function($scope, $rootScope, $http){
+      $scope.logout = function(){
+        $http.delete('/api/users/sign_out.json', {})
+          .success(function(){
+            $rootScope.current_user = null;
+            $rootScope.current_player = null;
+            $location.path('/');
+          })
+      }
 
+      $rootScope.requireLogout = function(){
+        if ($scope.current_user) $location.path('/home');
+      }
+
+      $rootScope.requireLogin = function(){
+        if (!$scope.current_user) $location.path('/login');
+      }
     }])
 
   .run(['$rootScope',
     function($rootScope){
       $rootScope.defaultTitle = $('title').text();
+      $rootScope.current_user = window.$app.current_user;
     }])

@@ -1,6 +1,6 @@
-window.$app.registry.push('home');
+window.$app.registry.push('dashboard');
 
-angular.module('home', [])
+angular.module('dashboard', [])
   .config(['$routeProvider',
     function($routeProvider){
       $routeProvider.

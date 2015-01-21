@@ -20,6 +20,14 @@ module Foodstuff
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
 
+    config.action_mailer.delivery_method = :mailgun
+    config.action_mailer.mailgun_settings = {
+      api_key: 'key-a0ad6409f0d186af7b5b67148cbf741f',
+      domain: 'millar.io'
+    }
+
+    config.active_support.escape_html_entities_in_json = false
+
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.active_record.raise_in_transactional_callbacks = true
   end

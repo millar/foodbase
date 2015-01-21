@@ -1,0 +1,76 @@
+<!-- <body-class>feature-page</body-class> -->
+<page-title>Sign up</page-title>
+
+<div class="hero hero-white">
+  <div class="container">
+
+    <div class="row">
+      <div class="col-md-6 col-md-offset-4">
+        <h2>Sign up</h2>
+      </div>
+    </div>
+
+    <form class="form-horizontal separated" name="userForm" ng-submit="save()">
+      <div class="form-group" show-errors>
+        <label class="control-label col-sm-4" for="username">
+          Username
+        </label>
+        <div class="col-md-4">
+          <input class="form-control" type="text" name="username" id="username"
+            ng-model="user.username"
+            ng-required ng-pattern="/^[a-z0-9\-_]+([a-z0-9\-_ ]*[a-z0-9\-_]+)?$/i"
+            ng-maxlength="16"
+            ng-minlength="3">
+            <span class="help-block">
+              Between 3 and 16 letters, numbers, spaces, - and _
+            </span>
+        </div>
+      </div>
+
+      <div class="form-group" show-errors>
+        <label class="control-label col-sm-4" for="email">
+          Email address
+        </label>
+        <div class="col-md-4">
+          <input class="form-control" type="email" name="email" id="email"
+            ng-model="user.email">
+        </div>
+      </div>
+
+      <div class="form-group" show-errors>
+        <label class="control-label col-sm-4" for="password">
+          Password
+        </label>
+        <div class="col-md-4">
+          <input class="form-control" type="password" name="password" id="password"
+            ng-model="user.password"
+            ng-maxlength="128"
+            ng-minlength="8"
+            ng-required>
+            <span class="help-block" ng-if="userForm.password.$invalid && saved">
+              Must contain at least 8 characters
+            </span>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-4 col-md-offset-4">
+          <div ng-if="errors" class="alert alert-danger">
+            <ul class="list-unstyled">
+              <div ng-repeat="(attribute, errs) in errors">
+                <li ng-repeat="err in errs">{{attribute}} {{err}}</li>
+              </div>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="col-md-4 col-md-offset-4">
+          <button type="submit" class="btn btn-primary">Complete Registration</button>
+        </div>
+      </div>
+    </form>
+
+  </div>
+</div>

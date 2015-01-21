@@ -11,8 +11,6 @@ gem 'less-rails'
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
-# Use CoffeeScript for .coffee assets and views
-gem 'coffee-rails', '~> 4.1.0'
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 gem 'therubyracer', platforms: :ruby
 
@@ -30,7 +28,12 @@ gem 'angular-rails-templates'
 # Icon framework
 gem 'font-awesome-rails'
 
+# Transactional email API
+gem 'mailgun_rails'
+
 gem 'responders', '~> 2.0'
+
+gem 'devise'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
