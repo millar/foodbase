@@ -1,7 +1,31 @@
-<page-title suffix="false">Meet Foodstuff</page-title>
+<page-title suffix="false">Meet Foodbase</page-title>
 
-<div class="hero">
-  <div class="container text-center">
-    <h2>Home</h2>
+<div class="container">
+  <div class="page-header">
+    <h3 class="page-title">
+      Planned Meals
+    </h3>
+  </div>
+  <div class="week row">
+    <div class="day col-md-1" ng-repeat="day in days">
+      <h4>
+        <div ng-if="$index == 0">
+          Today <small title="{{day.format('Do MMMM YYYY')}}">{{day.format("Do")}}</small>
+        </div>
+        <div ng-if="$index != 0">
+          {{day.format("dddd")}} <small title="{{day.format('Do MMMM YYYY')}}">{{day.format("Do")}}</small>
+        </div>
+      </h4>
+
+      <div class="paper">
+        <div class="meal">
+          <a href="#">Gammon and chips</a>
+        </div>
+      </div>
+
+      <div class="add-row">
+        <a class="btn btn-default btn-sm" href="#"><span class="octicon octicon-plus" style="font-size: 100%;"></span> Add Meal</a>
+      </div>
+    </div>
   </div>
 </div>

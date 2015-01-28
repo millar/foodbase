@@ -10,7 +10,15 @@ angular.module('home', [])
         });
     }])
 
-  .controller('DashboardIndexController', ['$scope',
-    function($scope) {
+  .controller('DashboardIndexController', ['$scope', '$http',
+    function($scope, $http) {
       $scope.requireLogin();
+
+      $http.get('/api/dashboard').success(function(obj){
+        $scope.now = moment(obj.now);
+
+        $scope.days = $.map([0, 1, 2, 3, 4], function(offset){
+          return $scope.now.clone().add(offset, "d");
+        });
+      });
     }])

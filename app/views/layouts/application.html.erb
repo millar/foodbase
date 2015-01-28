@@ -10,7 +10,7 @@
 
     <base href="/">
 
-    <title>Foodstuff</title>
+    <title>Foodbase</title>
 
     <script src="//use.typekit.net/qdz2ayh.js"></script>
     <script>try{Typekit.load();}catch(e){}</script>
@@ -36,10 +36,11 @@
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="/">Foodstuff</a>
+            <a class="navbar-brand" href="/">Foodbase</a>
           </div>
           <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
+              <li ng-if="current_user" ng-class="{ active: isActive('/home')}"><a href="/home">Planned Meals</a></li>
             </ul>
 
             <ul ng-if="!current_user" class="nav navbar-nav navbar-right">
@@ -50,10 +51,10 @@
 
             <ul ng-if="current_user" class="nav navbar-nav navbar-right">
               <!-- Signed in -->
-              <li class="dropdown">
+              <li class="dropdown" id="user-dropdown">
                 <a style="cursor: pointer" class="dropdown-toggle" data-toggle="dropdown">
-                  {{current_user.username}}
-                  <span class="caret"></span>
+                  Logged in as <strong>{{current_user.username}}</strong>
+                  <span class="octicon octicon-three-bars"></span>
                 </a>
                 <ul class="dropdown-menu" role="menu">
                   <li><a ng-click="logout()">Logout</a></li>
@@ -68,7 +69,20 @@
 
       <footer>
         <div class="container">
-          &copy; <%= Date.today.year %> Sam Millar
+          <div class="row">
+            <div class="col-md-4">
+              <span class="foot-brand">
+                <a href="/">Foodbase</a>
+              </span>
+            </div>
+            <div class="col-md-8 text-right">
+              <span class="attribution">&copy; <%= Date.today.year %> <a href="https://millar.io">Sam Millar</a></span>
+
+              <ul class="list-inline">
+                <li><a href="https://twitter.com/millr">Contact</a></li>
+                <li><a href="https://github.com/millar/foodbase">View Source</a></li>
+              </ul>
+            </div>
         </div>
       </footer>
 

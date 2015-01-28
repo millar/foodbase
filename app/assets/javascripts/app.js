@@ -45,6 +45,10 @@ angular.module('app', window.$app.registry)
       $rootScope.requireLogin = function(){
         if (!$scope.current_user) $location.path('/login');
       }
+
+      $rootScope.isActive = function (viewLocation) { 
+			    return $location.path().match(viewLocation);
+			};
     }])
 
   .run(['$rootScope',

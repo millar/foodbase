@@ -1,11 +1,11 @@
 {
-  "name": "foodstuff",
+  "name": "foodbase",
   "version": "0.0.0",
   "authors": [
     "Sam Millar"
   ],
   "license": "MIT",
-  "homepage": "https://github.com/millar/foodstuff",
+  "homepage": "https://github.com/millar/foodbase",
   "ignore": [
     "**/.*",
     "node_modules",
