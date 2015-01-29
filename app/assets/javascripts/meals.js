@@ -30,4 +30,16 @@ angular.module('meals', [])
       $scope.meal = {
         ingredients: [{}, {}, {}]
       };
+
+      $scope.removeIngredient = function(idx){
+        $scope.meal.ingredients.splice(idx, 1);
+
+        if (!$scope.meal.ingredients.length){
+          $scope.meal.ingredients[0] = {};
+        }
+      }
+
+      $scope.save = function(){
+        console.log($scope.meal);
+      };
     }])

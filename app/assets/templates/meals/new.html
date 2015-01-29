@@ -1,4 +1,4 @@
-<page-title suffix="false">New Meal</page-title>
+<page-title>New Meal</page-title>
 
 <div class="container">
   <div class="row">
@@ -56,12 +56,6 @@
           placeholder="no. people">
       </div>
     </div>
-<!--
-    <div class="row">
-      <div class="col-md-3 col-md-offset-3">
-        <h3>Ingredients</h3>
-      </div>
-    </div> -->
 
     <div class="row separated">
       <div class="col-md-3 col-md-offset-3">
@@ -83,13 +77,22 @@
             <input class="form-control text-center" type="text"
               ng-model="meal.ingredients[$index].quantity">
           </div>
+          <div class="col-md-2 remove-row">
+            <a ng-click="removeIngredient($index)"><span class="octicon octicon-x"></span></a>
+          </div>
         </div>
       </div>
     </div>
 
     <div class="row ingredient-add-row">
       <div class="col-md-6 col-md-offset-3">
-        <a ng-click="meal.ingredients.push({})" class="btn btn-default btn-sm">Add ingredient</a>
+        <a ng-click="meal.ingredients.push({})" class="btn btn-default btn-sm">Add</a>
+      </div>
+    </div>
+
+    <div class="row separated">
+      <div class="col-md-3 col-md-offset-3">
+        <button type="submit" class="btn btn-primary" style="margin-left: 6px">Save Meal</button>
       </div>
     </div>
   </form>

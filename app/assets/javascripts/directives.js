@@ -8,7 +8,7 @@ angular.module('directives', [])
         scope.$watch(function(){
            return element.text();
         }, function(title) {
-           if (scope.suffix) title += " - Foodbase";
+           if (scope.suffix) title += " on Foodbase";
 
            $('title').text(title);
         });
