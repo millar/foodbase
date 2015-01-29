@@ -5,7 +5,13 @@ Rails.application.routes.draw do
     resources :food, :meals
 
     get 'dashboard' => 'dashboard#index'
+
     devise_for :users
+    resources :users, only: [:show] do
+      scope module: "users" do
+        resources :meals, only: [:index]
+      end
+    end
   end
 
   get '(*path)' => 'app#view'

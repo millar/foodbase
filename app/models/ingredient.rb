@@ -4,8 +4,6 @@ class Ingredient < ActiveRecord::Base
   belongs_to :food
   # serialize :amount, Unit
 
-  # attr_accessible :attribute_name
-
   def amount=(string)
     string.sub! "half", "0.5"
     string.sub! "one", "1"
@@ -14,6 +12,6 @@ class Ingredient < ActiveRecord::Base
   end
 
   def amount
-    self[:string]
+    Unit(self.read_attribute(:amount))
   end
 end

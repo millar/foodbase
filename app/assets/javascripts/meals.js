@@ -8,28 +8,46 @@ angular.module('meals', [])
           templateUrl: 'meals/new.html',
           controller: 'MealsNewController'
         }).
+        when('/meals/:id/edit', {
+          templateUrl: 'meals/edit.html',
+          controller: 'MealsEditController'
+        }).
+        when('/meals/:id', {
+          templateUrl: 'meals/show.html',
+          controller: 'MealsShowController'
+        }).
         when('/meals', {
           templateUrl: 'meals/index.html',
           controller: 'MealsIndexController'
         });
     }])
 
-  .controller('MealsIndexController', ['$scope', '$http', 'Meal',
-    function($scope, $http, Meal) {
+  .controller('MealsIndexController', ['$scope', '$http',
+    function($scope, $http) {
       $scope.requireLogin();
 
-      // $scope.meals = Meal.query(function(meals){
-      //
-      // });
+      $http.get('/api/users/me/meals').success(function(meals){
+        $scope.meals = meals;
+        $scope.loaded = true;
+      });
+
+      $scope.topIngredients = function(meal){
+        return $.map(meal.ingredients, function(ingredient){
+          return ingredient.food;
+        });
+      };
     }])
 
-  .controller('MealsNewController', ['$scope', '$http', 'Meal',
-    function($scope, $http, Meal) {
+  .controller('MealsShowController', ['$scope', '$http', '$routeParams', 'Meal',
+    function($scope, $http, $routeParams, Meal) {
+      $scope.meal = Meal.get({id: $routeParams.id}, function(){$scope.loaded = true});
+    }])
+
+  .controller('MealsEditController', ['$scope', '$http', '$routeParams', 'Meal',
+    function($scope, $http, $routeParams, Meal) {
       $scope.requireLogin();
 
-      $scope.meal = {
-        ingredients: [{}, {}, {}]
-      };
+      $scope.meal = Meal.get({id: $routeParams.id}, function(){$scope.loaded = true});
 
       $scope.removeIngredient = function(idx){
         $scope.meal.ingredients.splice(idx, 1);
@@ -40,7 +58,7 @@ angular.module('meals', [])
       }
 
       $scope.save = function(){
-        new Meal($scope.meal).$save();
+        $scope.meal.$update();
       };
 
     }])

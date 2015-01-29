@@ -112,7 +112,7 @@ a[ng-click] {
 .hero {
   margin-top: -10px;
   margin-bottom: 10px;
-  padding: 70px 0 60px;
+  padding: 70px 0 40px;
 
   .cta {
     margin-top: 20px;
@@ -215,10 +215,7 @@ h3 {
   }
 }
 
-.paper {
-  @line-color: #eee;
-  @paper-line-height: 28px;
-
+.paper(@line-color: #e6e6e6; @paper-line-height: 28px) {
   font: normal @font-size-base/@paper-line-height @font-family-sans-serif;
   margin: 0 -15px;
   padding: 6px 15px 4px 15px;
@@ -226,13 +223,13 @@ h3 {
   color: #444;
   paper-line-height: @paper-line-height;
 
-  background: #fff;
-  background: -webkit-gradient(linear, 0 0, 0 100%, from(@line-color), color-stop(4%, #fff)) 0 4px;
-  background: -webkit-linear-gradient(top, @line-color 0%, #fff 8%) 0 4px;
-  background: -moz-linear-gradient(top, @line-color 0%, #fff 8%) 0 4px;
-  background: -ms-linear-gradient(top, @line-color 0%, #fff 8%) 0 4px;
-  background: -o-linear-gradient(top, @line-color 0%, #fff 8%) 0 4px;
-  background: linear-gradient(top, @line-color 0%, #fff 8%) 0 4px;
+  background: transparent;
+  background: -webkit-gradient(linear, 0 0, 0 100%, from(@line-color), color-stop(4%, transparent)) 0 4px;
+  background: -webkit-linear-gradient(top, @line-color 0%, transparent 8%) 0 4px;
+  background: -moz-linear-gradient(top, @line-color 0%, transparent 8%) 0 4px;
+  background: -ms-linear-gradient(top, @line-color 0%, transparent 8%) 0 4px;
+  background: -o-linear-gradient(top, @line-color 0%, transparent 8%) 0 4px;
+  background: linear-gradient(top, @line-color 0%, transparent 8%) 0 4px;
 
   -webkit-background-size: 100% @paper-line-height;
   -moz-background-size: 100% @paper-line-height;
@@ -334,4 +331,57 @@ h3 {
 
 .ingredient-add-row {
   padding: 0 12px;
+}
+
+.meal-description {
+  .ingredients {
+    h4 {
+      margin-bottom: 4px;
+      color: inherit;
+      font-size: 115%;
+      font-weight: 700;
+
+      .caps-head {
+        text-transform: uppercase;
+      }
+    }
+
+    margin: 0 -15px;
+    margin-bottom: 15px;
+    padding-right: 15px;
+    padding-left: 15px;
+
+    border: 1px solid #ddd;
+    border-radius: @border-radius-base;
+
+    .paper {
+      .paper;
+      padding-bottom: 15px;
+    }
+
+    .amount {
+      padding-left: 6px;
+    }
+  }
+}
+
+.fade-op {
+  .transition(~"opacity linear .2s");
+
+  &.is-out {
+    opacity: 0;
+  }
+}
+
+.reveal-animation.ng-enter {
+  -webkit-animation: enter_sequence 0.2s linear; /* Safari/Chrome */
+  animation: enter_sequence 0.2s linear; /* IE10+ and Future Browsers */
+}
+@-webkit-keyframes enter_sequence {
+  from { opacity:0; }
+  to { opacity:1; }
+}
+@keyframes enter_sequence {
+  from { opacity:0; }
+  to { opacity:1; }
 }

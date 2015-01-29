@@ -1,0 +1,36 @@
+<page-title>{{meal.title}}</page-title>
+
+<loading-icon class="reveal-animation">
+  <div class="hero">
+    <div class="container">
+      <h2>{{meal.title}}</h2>
+      <ul class="list-inline">
+        <li>Serves {{meal.serves}}</li>
+      </ul>
+      <p class="text-muted">
+        Added <span isodate="meal.created_at"></span>
+      </p>
+    </div>
+  </div>
+
+  <div class="container meal-description">
+    <div class="row">
+      <div class="col-md-4">
+        <div class="ingredients">
+          <h4>
+            <span class="caps-head">Ingredients</span>
+          </h4>
+          <div class="paper">
+            <div ng-repeat="ingredient in meal.ingredients">
+              {{ingredient.food}} <span class="text-muted amount">{{ingredient.amount}}</span>
+            </div>
+          </div>
+        </div>
+
+        <p class="separated">
+          <a ng-href="/meals/{{meal.id}}/edit" class="btn btn-default btn-sm">Edit This Meal</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</loading-icon>

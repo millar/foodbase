@@ -1,8 +1,12 @@
 class MealsController < ApplicationController
-  before_filter :authenticate_user!, except: :index
+  before_filter :authenticate_user!, except: [:index, :show]
 
   def index
-    @meals = Meal.where(public: true)
+    @meals = Meal.where("public = ? or user_id = ?", true, current_user.id)
+  end
+
+  def show
+    @meal = Meal.where("public = ? or user_id = ?", true, current_user.id).find(params[:id])
   end
 
   def create
