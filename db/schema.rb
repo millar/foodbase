@@ -11,7 +11,50 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150121235117) do
+ActiveRecord::Schema.define(version: 20150129144820) do
+
+  create_table "canonical_meals", force: :cascade do |t|
+    t.text     "url"
+    t.integer  "meals_count"
+    t.datetime "created_at",  null: false
+  end
+
+  create_table "food", force: :cascade do |t|
+    t.string  "name"
+    t.boolean "liquid",   default: false
+    t.decimal "wv_ratio"
+  end
+
+  create_table "food_aliases", force: :cascade do |t|
+    t.string  "name"
+    t.integer "food_id"
+  end
+
+  create_table "food_states", force: :cascade do |t|
+    t.string "term"
+    t.string "description"
+  end
+
+  create_table "ingredients", force: :cascade do |t|
+    t.decimal "quantity"
+    t.integer "unit"
+    t.integer "meal_id"
+    t.integer "food_id"
+    t.integer "food_state_id"
+  end
+
+  create_table "meals", force: :cascade do |t|
+    t.string   "title"
+    t.text     "notes"
+    t.integer  "serves"
+    t.integer  "time"
+    t.integer  "ingredients_count"
+    t.boolean  "canonical",         default: false
+    t.integer  "canon_id"
+    t.integer  "user_id"
+    t.datetime "created_at",                        null: false
+    t.datetime "updated_at",                        null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
