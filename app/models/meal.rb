@@ -8,6 +8,8 @@ class Meal < ActiveRecord::Base
 
   validates :title, presence: true
 
+  attr_accessor :url
+
   private
 
   def create_canon

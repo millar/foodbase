@@ -18,6 +18,8 @@
 //= require moment/moment
 //= require livestampjs/livestamp
 //
+//= require typeahead.js/dist/typeahead.bundle
+//
 //= require directives
 //= require services
 //= require app

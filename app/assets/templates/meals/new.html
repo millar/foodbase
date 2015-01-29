@@ -71,7 +71,8 @@
         <div class="form-group" show-errors>
           <div class="col-md-3 name col-md-offset-3">
             <input class="form-control" type="text"
-              ng-model="meal.ingredients[$index].name">
+              ng-model="meal.ingredients[$index].food"
+              selected-item="selectedItem" url="/api/food?name=%QUERY" value-key="name" ng-typeahead>
           </div>
           <div class="col-md-2 amount">
             <input class="form-control text-center" type="text"

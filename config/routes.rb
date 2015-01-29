@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   scope '/api', defaults: {format: :json} do
     # API resources
 
-    resources :food
+    resources :food, :meals
 
     get 'dashboard' => 'dashboard#index'
     devise_for :users

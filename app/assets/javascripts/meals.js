@@ -40,6 +40,7 @@ angular.module('meals', [])
       }
 
       $scope.save = function(){
-        console.log($scope.meal);
+        new Meal($scope.meal).$save();
       };
+
     }])

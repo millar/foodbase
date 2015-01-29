@@ -11,18 +11,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150129185940) do
+ActiveRecord::Schema.define(version: 20150129213309) do
 
   create_table "canonical_meals", force: :cascade do |t|
     t.text     "url"
     t.integer  "meals_count"
     t.datetime "created_at",  null: false
-  end
-
-  create_table "food", force: :cascade do |t|
-    t.string  "name"
-    t.boolean "liquid",   default: false
-    t.decimal "wv_ratio", default: 1.0
   end
 
   create_table "food_aliases", force: :cascade do |t|
@@ -33,6 +27,12 @@ ActiveRecord::Schema.define(version: 20150129185940) do
   create_table "food_states", force: :cascade do |t|
     t.string "term"
     t.string "description"
+  end
+
+  create_table "foods", force: :cascade do |t|
+    t.string  "name"
+    t.boolean "liquid",   default: false
+    t.decimal "wv_ratio", default: 1.0
   end
 
   create_table "ingredients", force: :cascade do |t|
