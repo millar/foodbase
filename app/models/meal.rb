@@ -6,6 +6,8 @@ class Meal < ActiveRecord::Base
 
   before_save :create_canon
 
+  validates :title, presence: true
+
   private
 
   def create_canon

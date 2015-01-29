@@ -1,0 +1,96 @@
+<page-title suffix="false">New Meal</page-title>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3">
+      <div class="page-header">
+        <h2 class="page-title">
+          Create New Meal
+        </h2>
+      </div>
+    </div>
+  </div>
+
+  <form class="form-horizontal" name="mealForm" ng-submit="save()">
+    <div class="form-group" show-errors>
+      <label class="control-label col-sm-3" for="title">
+        Name
+      </label>
+      <div class="col-md-5">
+        <input class="form-control" type="text" name="title" id="title"
+          ng-model="meal.title"
+          ng-required>
+      </div>
+    </div>
+
+    <!-- <div class="form-group" show-errors>
+      <label class="control-label col-sm-3" for="url">
+        Recipe URL
+      </label>
+      <div class="col-md-4">
+        <input class="form-control" type="text" name="url" id="url"
+          ng-model="meal.url"
+          ng-required>
+          <span class="help-block">
+            Optional.
+          </span>
+      </div>
+    </div> -->
+
+    <div class="form-group" show-errors>
+      <label class="control-label col-sm-3" for="time">
+        Cooking Time
+      </label>
+      <div class="col-md-2">
+        <input class="form-control" type="text" name="time" id="time"
+          ng-model="meal.time"
+          placeholder="in minutes">
+      </div>
+      <label class="control-label col-sm-1" for="serves">
+        Serves
+      </label>
+      <div class="col-md-2">
+        <input class="form-control" type="text" name="serves" id="serves"
+          ng-model="meal.serves"
+          ng-required
+          placeholder="no. people">
+      </div>
+    </div>
+<!--
+    <div class="row">
+      <div class="col-md-3 col-md-offset-3">
+        <h3>Ingredients</h3>
+      </div>
+    </div> -->
+
+    <div class="row separated">
+      <div class="col-md-3 col-md-offset-3">
+        <div class="caps-header">Ingredient</div>
+      </div>
+      <div class="col-md-2 text-center">
+        <div class="caps-header">Quantity</div>
+      </div>
+    </div>
+
+    <div class="ingredient-form">
+      <div class="ingredient" ng-repeat="ingredient in meal.ingredients track by $index">
+        <div class="form-group" show-errors>
+          <div class="col-md-3 name col-md-offset-3">
+            <input class="form-control" type="text"
+              ng-model="meal.ingredients[$index].name">
+          </div>
+          <div class="col-md-2 amount">
+            <input class="form-control text-center" type="text"
+              ng-model="meal.ingredients[$index].quantity">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row ingredient-add-row">
+      <div class="col-md-6 col-md-offset-3">
+        <a ng-click="meal.ingredients.push({})" class="btn btn-default btn-sm">Add ingredient</a>
+      </div>
+    </div>
+  </form>
+</div>
