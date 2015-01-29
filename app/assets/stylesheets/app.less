@@ -18,15 +18,12 @@ page-title {
 
 #navbar {
   .navbar-nav > li > a {
-    font-weight: 500;
   }
 
   .dropdown-menu {
     margin-top: -10px;
     border-radius: 2px;
   }
-
-  border-bottom: 1px solid #eee;
 }
 
 html {
@@ -87,13 +84,43 @@ a[ng-click] {
 }
 
 .page-title {
-  color: #45494d;
+  // color: #45494d;
+}
+
+.dark {
+  color: #eee;
+
+  h1, h2, h3, h4, h5, h6 {
+    color: #fff;
+  }
 }
 
 .hero {
-  margin-top: -@navbar-height - 20;
-  margin-bottom: @navbar-height + 20;
-  padding: 100px 0 60px;
+  margin-top: -10px;
+  margin-bottom: 10px;
+  padding: 70px 0 60px;
+
+  &.hero-inverse {
+    background: @navbar-inverse-bg;
+    .dark;
+
+    .lead {
+      color: #ccc;
+      font-family: @headings-font-family;
+    }
+
+    &.hero-gradient {
+      background: @navbar-inverse-bg;
+      #gradient > .vertical(
+        @navbar-inverse-bg,
+        rgba(red(@brand-primary),green(@brand-primary),blue(@brand-primary), 0.10)
+      );
+    }
+  }
+
+  .lead {
+    font-weight: 500;
+  }
 }
 
 h3 {
