@@ -29,6 +29,22 @@ angular.module('directives', [])
       }
     }])
 
+  .directive('bodyClass',
+    function(){
+      function link(scope, element){
+        $('body').addClass(element.text());
+
+        scope.$on('$destroy', function(){
+          $('body').removeClass(element.text());
+        })
+      }
+
+      return {
+        restrict: 'E',
+        link: link
+      }
+    })
+
   .directive('loadingIcon', function() {
     function link(scope){
       if (scope.loaded == undefined){

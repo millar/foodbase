@@ -14,7 +14,7 @@ angular.module('app', window.$app.registry)
     function($routeProvider, $location, $httpProvider, $cookieStoreProvider){
       $routeProvider
         .otherwise({
-          template: "Not found"
+          templateUrl: "errors/404.html"
         });
 
       $location.html5Mode(true).hashPrefix('!');
@@ -46,7 +46,7 @@ angular.module('app', window.$app.registry)
         if (!$scope.current_user) $location.path('/login');
       }
 
-      $rootScope.isActive = function (viewLocation) { 
+      $rootScope.isActive = function (viewLocation) {
 			    return $location.path().match(viewLocation);
 			};
     }])
