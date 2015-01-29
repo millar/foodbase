@@ -104,6 +104,10 @@ a[ng-click] {
   margin-bottom: 10px;
   padding: 70px 0 60px;
 
+  .cta {
+    margin-top: 20px;
+  }
+
   &.hero-inverse {
     background: @navbar-inverse-bg;
     .dark;
@@ -152,31 +156,15 @@ h3 {
 }
 
 .day {
-  min-height: 150px;
+  min-height: 450px;
   border-right: 1px solid #dedede;
 
   small {
     float: right;
   }
 
-  .paper {
-    min-height: 450px;
-  }
-
-  &:first-child {
-    .paper {
-      padding-left: 0;
-      margin-left: 0;
-    }
-  }
-
   &:last-child {
     border-right: 0;
-
-    .paper {
-      padding-right: 0;
-      margin-right: 0;
-    }
   }
 
   .meal {
@@ -216,7 +204,7 @@ h3 {
   }
 }
 
-.apaper {
+.paper {
   @line-color: #eee;
   @paper-line-height: 28px;
 
@@ -254,4 +242,8 @@ h3 {
 
 .btn-success {
   text-shadow: 0 -1px 0 darken(@btn-success-bg, 10%);
+}
+
+.btn-lg {
+  font-size: @font-size-base;
 }
