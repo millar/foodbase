@@ -2,23 +2,30 @@
 
 <loading-icon class="reveal-animation">
   <div class="container">
-    <div class="page-header">
-      <h2 class="page-title">
-        <a class="btn btn-primary pull-right" href="/meals/new"><span class="octicon octicon-plus" style="font-size: 100%;"></span> New Meal</a>
-        Your Meals
-      </h2>
-    </div>
+    <div class="row">
+      <div class="col-md-6 meal-column">
+        <div class="page-header">
+          <h2 class="page-title">
+            <a class="btn btn-primary pull-right" href="/meals/new"><span class="octicon octicon-plus" style="font-size: 100%;"></span> New Meal</a>
+            Your Meals
+          </h2>
+        </div>
 
-    <div ng-repeat="meal in meals">
-      <h3><a ng-href="/meals/{{meal.id}}">{{meal.title}}</a></h3>
-      <ul class="list-inline">
-        <li ng-repeat="ingredient in topIngredients(meal)">
-          {{ingredient}}
-        </li>
-      </ul>
-      <ul class="list-inline">
-        <li>Serves {{meal.serves}}</li>
-      </ul>
+        <div ng-repeat="meal in meals">
+          <h3><a ng-href="/meals/{{meal.id}}">{{meal.title}}</a></h3>
+          <ul class="list-inline">
+            <li ng-repeat="ingredient in topIngredients(meal)" class="text-muted">
+              {{ingredient}}
+            </li>
+          </ul>
+          <ul class="list-inline">
+            <li ng-if="meal.serves">Serves {{meal.serves}}</li>
+            <li ng-if="meal.time">Takes <span ng-pluralize count="meal.time"
+                 when="{'one': '1 min',
+                        'other': '{} mins'}"></li>
+          </ul>
+        </div>
+      </div>
     </div>
   </div>
 </loading-icon>

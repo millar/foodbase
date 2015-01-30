@@ -7,7 +7,7 @@ class Users::MealsController < ApplicationController
         user = User.find(params[:user_id])
       end
 
-      @meals = Meal.where("public = ? or user_id = ?", true, user.id).includes(:user, :ingredients => [:food])
+      @meals = Meal.active.where("public = ? or user_id = ?", true, user.id).includes(:user, :ingredients => [:food])
     end
   end
 end

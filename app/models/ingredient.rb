@@ -2,7 +2,6 @@ class Ingredient < ActiveRecord::Base
   belongs_to :meal
   belongs_to :state
   belongs_to :food
-  # serialize :amount, Unit
 
   def amount=(string)
     string.sub! "half", "0.5"

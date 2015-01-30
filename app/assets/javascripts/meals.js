@@ -41,13 +41,27 @@ angular.module('meals', [])
   .controller('MealsShowController', ['$scope', '$http', '$routeParams', 'Meal',
     function($scope, $http, $routeParams, Meal) {
       $scope.meal = Meal.get({id: $routeParams.id}, function(){$scope.loaded = true});
+
+      $scope.delete = function(){
+        $scope.meal.$delete(function(){
+          $scope.meal.active = false;
+        })
+      };
+
+      $scope.restore = function(){
+        $scope.meal.$restore(function(){
+          $scope.meal.active = true;
+        })
+      };
     }])
 
-  .controller('MealsEditController', ['$scope', '$http', '$routeParams', 'Meal',
-    function($scope, $http, $routeParams, Meal) {
+  .controller('MealsNewController', ['$scope', '$http', 'Meal', '$location', '$timeout',
+    function($scope, $http, Meal, $location, $timeout) {
       $scope.requireLogin();
 
-      $scope.meal = Meal.get({id: $routeParams.id}, function(){$scope.loaded = true});
+      $scope.meal = {
+        ingredients: [{}, {}, {}]
+      };
 
       $scope.removeIngredient = function(idx){
         $scope.meal.ingredients.splice(idx, 1);
@@ -55,10 +69,51 @@ angular.module('meals', [])
         if (!$scope.meal.ingredients.length){
           $scope.meal.ingredients[0] = {};
         }
-      }
+      };
+
+      $scope.addIngredient = function(){
+        $scope.meal.ingredients.push({});
+        $timeout(function(){
+          $('#ingredient_name_'+($scope.meal.ingredients.length-1)).focus();
+        });
+      };
 
       $scope.save = function(){
-        $scope.meal.$update();
+        new Meal($scope.meal).$save(function(meal){
+          $location.path('/meals/'+meal.id);
+        });
+      };
+
+    }])
+
+  .controller('MealsEditController', ['$scope', '$http', '$routeParams', 'Meal', '$location', '$timeout',
+    function($scope, $http, $routeParams, Meal, $location, $timeout) {
+      $scope.requireLogin();
+
+      $scope.meal = Meal.get({id: $routeParams.id}, function(meal){
+        $scope.loaded = true;
+        $scope.mealTitle = meal.title;
+      });
+
+      $scope.removeIngredient = function(idx){
+        $scope.meal.ingredients.splice(idx, 1);
+
+        if (!$scope.meal.ingredients.length){
+          $scope.meal.ingredients[0] = {};
+        }
+      };
+
+      $scope.addIngredient = function(){
+        $scope.meal.ingredients.push({});
+        $timeout(function(){
+          $('#ingredient_name_'+($scope.meal.ingredients.length-1)).focus();
+        });
+      };
+
+      $scope.save = function(){
+        $scope.meal.$update(function(){
+          $location.path('/meals/'+$scope.meal.id);
+        });
       };
 
     }])

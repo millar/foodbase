@@ -49,7 +49,7 @@
       <div class="caps-header">Ingredient</div>
     </div>
     <div class="col-md-2 text-center">
-      <div class="caps-header">Quantity</div>
+      <div class="caps-header" style="margin-left: -13px">Quantity</div>
     </div>
   </div>
 
@@ -57,13 +57,13 @@
     <div class="ingredient" ng-repeat="ingredient in meal.ingredients track by $index">
       <div class="form-group" show-errors>
         <div class="col-md-3 name col-md-offset-3">
-          <input class="form-control" type="text"
+          <input class="form-control" type="text" id="ingredient_name_{{$index}}"
             ng-model="meal.ingredients[$index].food"
-            selected-item="selectedItem" url="/api/food?name=%QUERY" value-key="name" ng-typeahead>
+            selected-item="selectedItem" url="/api/foods?name=%QUERY" value-key="name" ng-typeahead>
         </div>
         <div class="col-md-2 amount">
           <input class="form-control text-center" type="text"
-            ng-model="meal.ingredients[$index].quantity">
+            ng-model="meal.ingredients[$index].amount">
         </div>
         <div class="col-md-2 remove-row">
           <a ng-click="removeIngredient($index)"><span class="octicon octicon-x"></span></a>
@@ -73,8 +73,10 @@
   </div>
 
   <div class="row ingredient-add-row">
-    <div class="col-md-6 col-md-offset-3">
-      <a ng-click="meal.ingredients.push({})" class="btn btn-default btn-sm">Add</a>
+    <div class="col-md-5 col-md-offset-3">
+      <div>
+        <a ng-click="addIngredient()">Add Ingredient</a>
+      </div>
     </div>
   </div>
 

@@ -20,5 +20,15 @@ angular.module('home', [])
         $scope.days = $.map([0, 1, 2, 3, 4], function(offset){
           return $scope.now.clone().add(offset, "d");
         });
+
+        $scope.loaded = true;
       });
+
+      $scope.addMeal = function(){
+        $scope.interactive = true;
+      }
+
+      $scope.cancelInteraction = function(){
+        $scope.interactive = false;
+      }
     }])

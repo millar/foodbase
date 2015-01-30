@@ -2,7 +2,12 @@ Rails.application.routes.draw do
   scope '/api', defaults: {format: :json} do
     # API resources
 
-    resources :food, :meals
+    resources :foods
+    resources :meals do
+      member do
+        put 'restore' => 'meals#restore'
+      end
+    end
 
     get 'dashboard' => 'dashboard#index'
 

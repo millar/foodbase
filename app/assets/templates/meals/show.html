@@ -5,11 +5,15 @@
     <div class="container">
       <h2>{{meal.title}}</h2>
       <ul class="list-inline">
-        <li>Serves {{meal.serves}}</li>
+        <li ng-if="meal.serves">Serves {{meal.serves}}</li>
+        <li ng-if="meal.time">Takes <span ng-pluralize count="meal.time"
+             when="{'one': '1 min',
+                    'other': '{} mins'}"></li>
       </ul>
       <p class="text-muted">
         Added <span isodate="meal.created_at"></span>
       </p>
+      <p><span ng-if="!meal.active" class="label label-danger">Deleted</span></p>
     </div>
   </div>
 
@@ -28,7 +32,9 @@
         </div>
 
         <p class="separated">
-          <a ng-href="/meals/{{meal.id}}/edit" class="btn btn-default btn-sm">Edit This Meal</a>
+          <a ng-if="meal.active" ng-href="/meals/{{meal.id}}/edit" class="btn btn-default btn-sm">Edit This Meal</a>
+          <a ng-click="delete()" ng-if="meal.active" class="btn btn-danger btn-sm">Delete Meal</a>
+          <a ng-click="restore()" ng-if="!meal.active" class="btn btn-default btn-sm">Restore Meal</a>
         </p>
       </div>
     </div>

@@ -275,8 +275,6 @@ h3 {
 }
 
 .ingredient-form {
-  margin-bottom: 10px;
-
   .ingredient:last-child {
     .form-control {
       border-radius: 0;
@@ -330,7 +328,10 @@ h3 {
 }
 
 .ingredient-add-row {
-  padding: 0 12px;
+  > div > div {
+    padding: 10px 12px;
+    border-bottom: 1px solid #ddd;
+  }
 }
 
 .meal-description {
@@ -374,8 +375,8 @@ h3 {
 }
 
 .reveal-animation.ng-enter {
-  -webkit-animation: enter_sequence 0.2s linear; /* Safari/Chrome */
-  animation: enter_sequence 0.2s linear; /* IE10+ and Future Browsers */
+  -webkit-animation: enter_sequence 0.1s linear; /* Safari/Chrome */
+  animation: enter_sequence 0.1 linear; /* IE10+ and Future Browsers */
 }
 @-webkit-keyframes enter_sequence {
   from { opacity:0; }
@@ -384,4 +385,34 @@ h3 {
 @keyframes enter_sequence {
   from { opacity:0; }
   to { opacity:1; }
+}
+
+.meal-column {
+  // border-right: 1px solid #ddd;
+}
+
+.undo-h {
+  font-size: @font-size-base;
+  font-weight: normal;
+  font-family: @font-family-sans-serif;
+}
+
+.pull-right {
+  .tip {
+    padding-right: 12px;
+  }
+}
+
+.food-cloud {
+
+  .food {
+    float: left;
+    margin-right: 25px;
+
+    .foodname {
+      a {
+        color: inherit;
+      }
+    }
+  }
 }

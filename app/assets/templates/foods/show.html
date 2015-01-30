@@ -1,0 +1,18 @@
+<page-title>{{food.title}}</page-title>
+
+<loading-icon class="reveal-animation">
+  <div class="hero">
+    <div class="container">
+      <h1>{{food.name}}</h1>
+      <!-- <ul class="list-inline">
+        <li ng-if="meal.serves">Serves {{meal.serves}}</li>
+        <li ng-if="meal.time">Takes <span ng-pluralize count="meal.time"
+             when="{'one': '1 min',
+                    'other': '{} mins'}"></li>
+      </ul> -->
+      <p class="text-muted">
+        Added <span isodate="food.created_at"></span>
+      </p>
+    </div>
+  </div>
+</loading-icon>

@@ -1,0 +1,28 @@
+<page-title>Foods</page-title>
+
+<loading-icon class="reveal-animation">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="page-header">
+          <h1 class="page-title">
+            Foods
+          </h1>
+        </div>
+
+        <div class="food-cloud">
+          <div class="food" ng-repeat="food in foods">
+            <h3 class="foodname"><a ng-href="/foods/{{food.id}}">{{food.name}}</a></h3>
+
+            <!-- <ul class="list-inline">
+              <li ng-if="meal.serves">Serves {{meal.serves}}</li>
+              <li ng-if="meal.time">Takes <span ng-pluralize count="meal.time"
+                   when="{'one': '1 min',
+                          'other': '{} mins'}"></li>
+            </ul> -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</loading-icon>
