@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150130172346) do
+ActiveRecord::Schema.define(version: 20150130173309) do
 
   create_table "canonical_meals", force: :cascade do |t|
     t.text     "url"
@@ -34,6 +34,7 @@ ActiveRecord::Schema.define(version: 20150130172346) do
     t.boolean  "liquid",     default: false
     t.decimal  "wv_ratio",   default: 1.0
     t.datetime "created_at"
+    t.string   "slug"
   end
 
   create_table "ingredients", force: :cascade do |t|

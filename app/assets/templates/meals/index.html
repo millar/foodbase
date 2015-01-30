@@ -15,7 +15,7 @@
           <h3><a ng-href="/meals/{{meal.id}}">{{meal.title}}</a></h3>
           <ul class="list-inline">
             <li ng-repeat="ingredient in topIngredients(meal)" class="text-muted">
-              {{ingredient}}
+              <a class="text-default" ng-href="/foods/{{ingredient.id}}">{{ingredient.name}}</a>
             </li>
           </ul>
           <ul class="list-inline">

@@ -1,6 +1,6 @@
 <page-title>{{meal.title}}</page-title>
 
-<loading-icon class="reveal-animation">
+<loading-icon class="reveal-animation text-center">
   <div class="hero">
     <div class="container">
       <h2>{{meal.title}}</h2>
@@ -19,14 +19,14 @@
 
   <div class="container meal-description">
     <div class="row">
-      <div class="col-md-4">
+      <div class="col-md-4 col-md-offset-4">
         <div class="ingredients">
           <h4>
             <span class="caps-head">Ingredients</span>
           </h4>
           <div class="paper">
             <div ng-repeat="ingredient in meal.ingredients">
-              {{ingredient.food}} <span class="text-muted amount">{{ingredient.amount}}</span>
+              <a class="text-default" ng-href="/foods/{{ingredient.food.id}}">{{ingredient.food.name}}</a> <span class="text-muted amount">{{ingredient.amount}}</span>
             </div>
           </div>
         </div>
