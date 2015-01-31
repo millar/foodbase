@@ -15,6 +15,10 @@ Rails.application.routes.draw do
       end
     end
 
+    namespace :schedule do
+      resources :meals
+    end
+
     get 'dashboard' => 'dashboard#index'
 
     devise_for :users

@@ -12,6 +12,7 @@ class User < ActiveRecord::Base
   before_save { |user| user.username_lower = username.downcase if user.username_changed? }
 
   has_many :meals
+  has_many :scheduled_meals
 
   attr_accessor :login
 
