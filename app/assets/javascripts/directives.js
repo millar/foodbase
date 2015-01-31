@@ -47,15 +47,25 @@ angular.module('directives', [])
 
   .directive('loadingIcon', function() {
     function link(scope){
+      NProgress.start();
+      
       if (scope.loaded == undefined){
         scope.loaded = true;
       }
 
       scope.class = scope.class || "";
+
+      scope.$watch('loaded', function(loaded){
+        if (loaded){
+          NProgress.done();
+        } else {
+          NProgress.start();
+        }
+      });
     }
 
     return {
-      template: '<div ng-if="!loaded || !$parent.loaded" class="text-center loader"><p><span class="fa fa-circle-o-notch fa-spin text-muted"></span></p></div>' +
+      template: //'<div ng-if="!loaded || !$parent.loaded" class="text-center loader"><p><span class="fa fa-circle-o-notch fa-spin text-muted"></span></p></div>' +
                 '<div ng-if="loaded && $parent.loaded" class="{{class}}" ng-transclude></div>',
       scope: {
         loaded: '=?',

@@ -45,7 +45,7 @@ class MealsController < ApplicationController
     meal_params['ingredients'].each do |ingredient|
       food = ingredient['food']
 
-      next if food.blank?
+      next if food.blank? or ingredient['amount'].blank?
 
       i = Ingredient.create(amount: ingredient['amount'])
 

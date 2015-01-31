@@ -20,6 +20,8 @@
 //
 //= require typeahead.js/dist/typeahead.bundle
 //
+//= require nprogress/nprogress
+//
 //= require directives
 //= require services
 //= require app

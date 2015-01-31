@@ -21,6 +21,7 @@
     "octicons": "~2.1.2",
     "moment": "~2.9.0",
     "livestampjs": "~1.1.2",
-    "typeahead.js": "~0.10.5"
+    "typeahead.js": "~0.10.5",
+    "nprogress": "~0.1.6"
   }
 }

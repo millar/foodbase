@@ -33,7 +33,7 @@ angular.module('meals', [])
 
       $scope.topIngredients = function(meal){
         return $.map(meal.ingredients, function(ingredient){
-          return ingredient.food;
+          return ingredient;
         });
       };
     }])
