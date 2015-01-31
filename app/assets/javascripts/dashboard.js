@@ -10,18 +10,39 @@ angular.module('home', [])
         });
     }])
 
-  .controller('DashboardIndexController', ['$scope', '$http',
-    function($scope, $http) {
+  .controller('DashboardIndexController', ['$scope', '$http', '$timeout',
+    function($scope, $http, $timeout) {
       $scope.requireLogin();
 
       $http.get('/api/dashboard').success(function(obj){
         $scope.now = moment(obj.now);
 
         $scope.days = $.map([0, 1, 2, 3, 4], function(offset){
-          return $scope.now.clone().add(offset, "d");
+          var moment = $scope.now.clone().add(offset, "d");
+          var date = moment.format('YYYY-MM-DD');
+          return {
+            moment: moment,
+            date: date
+          }
         });
 
         $scope.loaded = true;
+
+        $timeout(function(){
+          $('.day').click(function(e){
+            if ($scope.interactive){
+              var $this = $(this);
+              $scope.targetDay = $this.data('day');
+              e.preventDefault();
+
+              $scope.$apply();
+
+              $timeout(function(){
+                $this.find('.blank-input').focus()
+              });
+            }
+          });
+        });
       });
 
       $scope.addMeal = function(){
@@ -31,4 +52,8 @@ angular.module('home', [])
       $scope.cancelInteraction = function(){
         $scope.interactive = false;
       }
+
+      $scope.$on('$destroy', function(){
+        $('.day').unbind();
+      });
     }])

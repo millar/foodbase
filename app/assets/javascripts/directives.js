@@ -48,7 +48,7 @@ angular.module('directives', [])
   .directive('loadingIcon', function() {
     function link(scope){
       NProgress.start();
-      
+
       if (scope.loaded == undefined){
         scope.loaded = true;
       }
@@ -62,6 +62,10 @@ angular.module('directives', [])
           NProgress.start();
         }
       });
+
+      scope.$on('$destroy', function(){
+        NProgress.done();
+      })
     }
 
     return {

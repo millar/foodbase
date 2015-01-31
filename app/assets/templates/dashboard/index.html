@@ -6,20 +6,21 @@
       <h3 class="page-title">
         <a ng-if="!interactive" class="btn btn-primary pull-right" ng-click="addMeal()"><span class="octicon octicon-plus" style="font-size: 100%;"></span> Add Meal</a>
         <span ng-if="interactive" class="pull-right">
-          <span class="text-muted undo-h tip">Choose a day</span>
+          <span class="text-muted undo-h tip" ng-if="!targetDay">Choose a day</span>
           <a class="btn btn-danger" ng-click="cancelInteraction()"><span class="octicon octicon-x" style="font-size: 100%;"></span> Cancel</a>
         </span>
         Meal Schedule
       </h3>
     </div>
-    <div class="week row">
-      <div class="day col-md-1" ng-repeat="day in days">
+
+    <div class="week row" ng-class="{interactive: interactive}">
+      <div class="day col-md-1" ng-repeat="day in days" ng-class="{active: targetDay == day.date, inactive: targetDay != day.date && targetDay}" data-day="{{day.date}}">
         <h4>
           <div ng-if="$index == 0">
-            Today <small title="{{day.format('Do MMMM YYYY')}}">{{day.format("Do")}}</small>
+            Today <small title="{{day.moment.format('DD-MM-YYYY')}}">{{day.moment.format("Do")}}</small>
           </div>
           <div ng-if="$index != 0">
-            {{day.format("dddd")}} <small title="{{day.format('Do MMMM YYYY')}}">{{day.format("Do")}}</small>
+            {{day.moment.format("dddd")}} <small title="{{day.moment.format('Do MMMM YYYY')}}">{{day.moment.format("Do")}}</small>
           </div>
         </h4>
 
@@ -29,6 +30,10 @@
             <ul class="list-inline small">
               <li>4 portions</li>
             </ul>
+          </div>
+
+          <div class="schedule-form">
+            <input type="text" class="blank-input">
           </div>
         </div>
       </div>
