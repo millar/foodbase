@@ -3,6 +3,10 @@ class MealsController < ApplicationController
 
   def index
     @meals = Meal.active.where("public = ? or user_id = ?", true, current_user.id)
+
+    if params[:name]
+      @meals = @meals.where("title LIKE ?", "%#{params[:name]}%")
+    end
   end
 
   def show

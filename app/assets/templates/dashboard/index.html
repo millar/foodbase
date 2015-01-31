@@ -32,8 +32,20 @@
             </ul>
           </div>
 
-          <div class="schedule-form">
-            <input type="text" class="blank-input">
+          <div class="schedule-form" ng-if="targetDay == day.date">
+            <form ng-submit="saveMeal()">
+              <input type="text" class="new-title blank-input" ng-model="meal.title" id="mealField"
+                selected-item="$parent.$parent.$parent.$parent.$parent.selectedMeal" url="/api/users/me/meals?name=%QUERY" value-key="title" ng-typeahead>
+              <button type="submit" style="display: none;"></button>
+              <ul class="list-inline small">
+                <li ng-if="selectedMeal.title == meal.title" ng-pluralize when="{
+                  '1': '{} portion',
+                  'other': '{} portions'
+                }" count="selectedMeal.serves"></li>
+                <li>&nbsp;</li>
+                <li>{{selectedMeal.$id}}</li>
+              </ul>
+            </form>
           </div>
         </div>
       </div>

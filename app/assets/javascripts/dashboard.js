@@ -10,12 +10,16 @@ angular.module('home', [])
         });
     }])
 
-  .controller('DashboardIndexController', ['$scope', '$http', '$timeout',
-    function($scope, $http, $timeout) {
+  .controller('DashboardIndexController', ['$scope', '$http', '$timeout', 'ScheduledMeal',
+    function($scope, $http, $timeout, ScheduledMeal) {
       $scope.requireLogin();
+
+      $scope.meal = {};
+      $scope.selectedMeal = {portions: 10};
 
       $http.get('/api/dashboard').success(function(obj){
         $scope.now = moment(obj.now);
+        $scope.scheduledMeals = moment(obj.scheduled_meals);
 
         $scope.days = $.map([0, 1, 2, 3, 4], function(offset){
           var moment = $scope.now.clone().add(offset, "d");
@@ -33,7 +37,7 @@ angular.module('home', [])
             if ($scope.interactive){
               var $this = $(this);
               $scope.targetDay = $this.data('day');
-              e.preventDefault();
+              // e.preventDefault();
 
               $scope.$apply();
 
@@ -51,6 +55,18 @@ angular.module('home', [])
 
       $scope.cancelInteraction = function(){
         $scope.interactive = false;
+        $scope.targetDay = null;
+      }
+
+      $scope.saveMeal = function(){
+        if ($scope.selectedMeal.title != $scope.meal.title){
+          return false;
+        }
+
+        new ScheduledMeal({date: $scope.targetDate, meal: $scope.meal.id}).$save(function(scheduledMeal){
+          $scope.cancelInteraction();
+          scheduledMeals.push(scheduledMeal);
+        });
       }
 
       $scope.$on('$destroy', function(){

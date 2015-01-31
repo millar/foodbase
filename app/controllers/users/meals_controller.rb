@@ -7,5 +7,9 @@ class Users::MealsController < ApplicationController
     end
 
     @meals = Meal.active.where("public = ? or user_id = ?", true, user.id).includes(:user, :ingredients => [:food])
+
+    if params[:name]
+      @meals = @meals.where("title LIKE ?", "%#{params[:name]}%")
+    end
   end
 end

@@ -135,11 +135,11 @@ angular.module('directives', [])
           name: 'food-items'
         });
 
-        scope.$watch('selectedItem', function (newValue) {
-          if (newValue === '') {
-            element.typeahead('setQuery', '');
-          }
-        }, true);
+        // scope.$watch('selectedItem', function (newValue) {
+        //   if (newValue === '') {
+        //     element.typeahead('setQuery', '');
+        //   }
+        // }, true);
 
         element.on('change', function (event) {
           if (attrs.ngModel) {
@@ -153,22 +153,22 @@ angular.module('directives', [])
           scope.selectedItem = datum;
 
           if (attrs.ngModel) {
-            scope.ngModel = datum;
+            scope.ngModel = datum[attrs.valueKey];
           }
 
           scope.$apply();
-          $(event.target).val(datum.name);
+          $(event.target).val(datum[attrs.valueKey]);
         });
 
         element.on('typeahead:autocompleted', function (event, datum, dataset) {
           scope.selectedItem = datum;
 
           if (attrs.ngModel) {
-            scope.ngModel = datum;
+            scope.ngModel = datum[attrs.valueKey];
           }
 
           scope.$apply();
-          $(event.target).val(datum.name);
+          $(event.target).val(datum[attrs.valueKey]);
 
           element.typeahead('close')
         });
@@ -178,4 +178,4 @@ angular.module('directives', [])
         });
       }
     };
-  });
+  })
