@@ -1,5 +1,6 @@
 class ScheduledMeal < ActiveRecord::Base
   belongs_to :meal
+  belongs_to :user
 
   before_create :set_position
   before_save :update_position

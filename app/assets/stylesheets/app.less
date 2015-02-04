@@ -172,17 +172,12 @@ h3 {
   .schedule-form {
     display: none;
 
-    border: 1px solid #eee;
-    border-width: 1px 0;
-    border-radius: 2px;
-    margin-left: -15px;
-    margin-right: -15px;
     margin-top: -1px;
     padding: 10px 15px;
 
     background: lighten(@brand-primary, 50%);
     border: 1px solid lighten(@brand-primary, 45%);
-    border-width: 1px 0;
+    border-width: 1px 0 0;
 
     .blank-input {
       font-size: 16px;
@@ -210,7 +205,9 @@ h3 {
         background: transparent;
         border: 1px solid lighten(@brand-primary, 45%);
         margin-left: -1px;
-        margin-right: 1px;
+
+        position: relative;
+        z-index: 5;
 
         &:hover {
           background: transparent;
@@ -231,7 +228,8 @@ h3 {
 
         border: 1px solid lighten(@brand-primary, 45%);
         margin-left: -1px;
-        margin-right: 1px;
+        position: relative;
+        z-index: 4;
 
         a {
           // text-decoration: none !important;
@@ -244,6 +242,7 @@ h3 {
 .day {
   min-height: 450px;
   border-right: 1px solid #dedede;
+  border-left: 1px solid #dedede;
 
   small {
     float: right;
@@ -253,13 +252,38 @@ h3 {
     border-right: 0;
   }
 
-  .meal {
-    border: 1px solid #eee;
-    // background: #f5f5f5;
-    border-width: 1px 0;
-    padding: 0px 15px;
+  &:first-child {
+    border-left: 0;
+  }
+
+  margin-left: -1px;
+
+  .meal-list {
+    border-top: 1px solid #eee;
     margin-left: -15px;
     margin-right: -15px;
+  }
+
+  .meal {
+    border: 1px solid #eee;
+    border-width: 1px 0;
+    padding: 0px 15px;
+    margin-top: -1px;
+
+    &:last-child {
+      border-bottom: 1px solid #dedede;
+    }
+
+    .delete-btn {
+      opacity: 0;
+    }
+
+    &:hover {
+      .delete-btn {
+        opacity: 1;
+        .transition(~"opacity linear .2s, bottom linear .2s");
+      }
+    }
 
     h6 {
       font-size: 16px;
@@ -269,7 +293,7 @@ h3 {
     }
 
     a {
-      color: inherit;
+      // color: inherit;
     }
 
     ul {

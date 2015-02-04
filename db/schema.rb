@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150130173309) do
+ActiveRecord::Schema.define(version: 20150131234906) do
 
   create_table "canonical_meals", force: :cascade do |t|
     t.text     "url"
@@ -59,6 +59,13 @@ ActiveRecord::Schema.define(version: 20150130173309) do
     t.datetime "updated_at",                        null: false
     t.boolean  "public",            default: false
     t.boolean  "active",            default: true
+  end
+
+  create_table "scheduled_meals", force: :cascade do |t|
+    t.integer "position", default: 0, null: false
+    t.date    "date",                 null: false
+    t.integer "user_id"
+    t.integer "meal_id"
   end
 
   create_table "users", force: :cascade do |t|

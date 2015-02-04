@@ -2,23 +2,25 @@ class Schedule::MealsController < ApplicationController
   before_filter :authenticate_user!
 
   def index
-    @scheduled_meals = current_user.scheduled_meals
+    @meals = current_user.scheduled_meals.includes(:meal).order(:position)
   end
 
   def show
-    @scheduled_meal = current_user.scheduled_meals.find(params[:id])
+    @meal = current_user.scheduled_meals.includes(:meal).find(params[:id])
   end
 
   def create
-    meal = current_user.scheduled_meals.create(scheduled_meal_params)
+    @meal = current_user.scheduled_meals.build(scheduled_meal_params)
+    @meal.meal = current_user.meals.find(params[:meal][:id])
+    @meal.save
 
-    respond_with meal, location: nil
+    render template: 'schedule/meals/show'
   end
 
   def update
-    meal = current_user.scheduled_meals.update(scheduled_meal_params)
+    @meal = current_user.scheduled_meals.update(scheduled_meal_params)
 
-    respond_with meal
+    render template: 'schedule/meals/show'
   end
 
   def destroy

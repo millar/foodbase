@@ -1,18 +1,18 @@
 <page-title>Meal Schedule</page-title>
 
-<loading-icon class="reveal-animation">
-  <div class="container">
-    <div class="page-header">
-      <h3 class="page-title">
-        <a ng-if="!interactive" class="btn btn-primary pull-right" ng-click="addMeal()"><span class="octicon octicon-plus" style="font-size: 100%;"></span> Add Meal</a>
-        <span ng-if="interactive" class="pull-right">
-          <span class="text-muted undo-h tip" ng-if="!targetDay">Choose a day</span>
-          <a class="btn btn-danger" ng-click="cancelInteraction()"><span class="octicon octicon-x" style="font-size: 100%;"></span> Cancel</a>
-        </span>
-        Meal Schedule
-      </h3>
-    </div>
+<div class="container">
+  <div class="page-header">
+    <h2 class="page-title">
+      <a ng-if="!interactive" class="btn btn-primary pull-right" ng-click="addMeal()"><span class="octicon octicon-plus" style="font-size: 100%;"></span> Add Meal</a>
+      <span ng-if="interactive" class="pull-right">
+        <span class="text-muted undo-h tip" ng-if="!targetDay">Choose a day</span>
+        <a class="btn btn-danger" ng-click="cancelInteraction()"><span class="octicon octicon-x" style="font-size: 100%;"></span> Cancel</a>
+      </span>
+      Meal Schedule
+    </h2>
+  </div>
 
+  <loading-icon class="reveal-animation">
     <div class="week row" ng-class="{interactive: interactive}">
       <div class="day col-md-1" ng-repeat="day in days" ng-class="{active: targetDay == day.date, inactive: targetDay != day.date && targetDay}" data-day="{{day.date}}">
         <h4>
@@ -25,10 +25,20 @@
         </h4>
 
         <div class="meal-list">
-          <div class="meal">
-            <h6><a href="#">Gammon and chips</a></h6>
+          <div class="meal" ng-repeat="scheduledMeal in scheduledMeals | filter:{date: day.date}">
+            <h6>
+              <a class="pull-right small delete-btn" ng-click="deleteMeal(scheduledMeal.id)"><span class="octicon octicon-x" style="font-size: inherit"></span></a>
+              <a href="/meals/{{scheduledMeal.meal.id}}">{{scheduledMeal.meal.title}}</a>
+            </h6>
             <ul class="list-inline small">
-              <li>4 portions</li>
+              <li ng-if="scheduledMeal.meal.serves" ng-pluralize when="{
+                '1': '{} portion',
+                'other': '{} portions'
+              }" count="scheduledMeal.meal.serves"></li>
+              <li ng-if="scheduledMeal.meal.time" class="text-muted" ng-pluralize when="{
+                '1': '{} min',
+                'other': '{} mins'
+              }" count="scheduledMeal.meal.time"></li>
             </ul>
           </div>
 
@@ -38,17 +48,16 @@
                 selected-item="$parent.$parent.$parent.$parent.$parent.selectedMeal" url="/api/users/me/meals?name=%QUERY" value-key="title" ng-typeahead>
               <button type="submit" style="display: none;"></button>
               <ul class="list-inline small">
-                <li ng-if="selectedMeal.title == meal.title" ng-pluralize when="{
+                <li ng-if="selectedMeal.serves && selectedMeal.title == meal.title" ng-pluralize when="{
                   '1': '{} portion',
                   'other': '{} portions'
                 }" count="selectedMeal.serves"></li>
                 <li>&nbsp;</li>
-                <li>{{selectedMeal.$id}}</li>
               </ul>
             </form>
           </div>
         </div>
       </div>
     </div>
-  </div>
-</loading-icon>
+  </loading-icon>
+</div>

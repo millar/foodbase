@@ -15,3 +15,9 @@ Unit.define('bunch') do |bunch|
   bunch.aliases      = %w{bunch bunches}
   bunch.kind        = :counting
 end
+
+Unit.define('tin') do |tin|
+  tin.definition   = Unit.new('1 each')
+  tin.aliases      = %w{tin tins}
+  tin.kind        = :counting
+end

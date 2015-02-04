@@ -49,6 +49,10 @@ angular.module('app', window.$app.registry)
       $rootScope.isActive = function (viewLocation) {
 			    return $location.path().match(viewLocation);
 			};
+
+      $(window).resize(function(){
+        $scope.$broadcast('resize');
+      });
     }])
 
   .run(['$rootScope',
