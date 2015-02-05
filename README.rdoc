@@ -1,3 +1,0 @@
-== Foodbase
-
-A work in progress nifty application for planning meals to generate shopping lists.
