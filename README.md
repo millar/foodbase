@@ -9,7 +9,7 @@ A work in progress nifty application for planning meals to generate shopping lis
 - [AngularJS](https://github.com/angular/angular.js) - provides single page application logic
 - [Bootstrap](https://github.com/twbs/bootstrap) - provides base styles for design
 
-## Installation
+## Getting Started
 
 Required assets must be installed via [Bower](http://bower.io/):
 
@@ -17,8 +17,18 @@ Required assets must be installed via [Bower](http://bower.io/):
 bower install
 ```
 
+Then all gems must be installed via [Bundler](http://bundler.io/):
+
+```sh
+bundle install
+```
+
 The application can then be [deployed](http://rubyonrails.org/deploy/) like any Rails application.
 
 ## Author
 
 Foodbase is a project by [Sam Millar](https://millar.io).
+
+## License
+
+Foodbase is released under the [MIT license](http://opensource.org/licenses/MIT).
