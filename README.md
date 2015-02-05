@@ -1,6 +1,8 @@
 Foodbase
 ========
 
+[![Build Status](https://magnum.travis-ci.com/millar/foodbase.svg?token=rfm6MoJCPqDxnzTabbCB)](https://magnum.travis-ci.com/millar/foodbase)
+
 A work in progress nifty application for planning meals to generate shopping lists.
 
 ## Created With
