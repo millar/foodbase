@@ -13,6 +13,7 @@ before_install:
   - npm i -g bower
 
 before_script:
+  - mysql -e 'create database foodbase_test;'
   - bower install
   - bundle exec rake db:migrate
 
