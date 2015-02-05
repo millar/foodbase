@@ -19,3 +19,4 @@
 /vendor/assets/components
 
 .powenv
+.rbenv-vars

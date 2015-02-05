@@ -1,0 +1,31 @@
+language: ruby
+
+matrix:
+  allow_failures:
+    - rvm: 2.0.0
+      env: "RAILS_MASTER=1"
+    - rvm: 2.1
+      env: "RAILS_MASTER=1"
+  fast_finish: true
+
+rvm:
+  - 2.0.0
+  - 2.1
+
+services:
+  - redis-server
+
+sudo: false
+
+cache: bundler
+
+before_install:
+  - npm i -g bower
+
+before_script:
+  - bower install
+  - bundle exec rake db:migrate
+
+bundler_args: --without development --deployment --retry=3 --jobs=3
+
+script: 'bundle exec rspec'
