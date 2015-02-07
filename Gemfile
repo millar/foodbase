@@ -44,7 +44,7 @@ gem 'ruby-units'
 # gem 'unicorn'
 
 # Use Capistrano for deployment
-gem 'capistrano-rails', group: :development
+# gem 'capistrano-rails', group: :development
 
 group :test, :production do
   gem 'mysql2'

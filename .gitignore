@@ -18,5 +18,9 @@
 
 /vendor/assets/components
 
+Capfile
+config/deploy.rb
+config/deploy/
+
 .powenv
 .rbenv-vars
