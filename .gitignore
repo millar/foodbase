@@ -21,6 +21,8 @@
 Capfile
 config/deploy.rb
 config/deploy/
+lib/capistrano
+.capistrano
 
 .powenv
 .rbenv-vars

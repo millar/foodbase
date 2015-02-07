@@ -22,6 +22,7 @@
     "moment": "~2.9.0",
     "livestampjs": "~1.1.2",
     "typeahead.js": "~0.10.5",
-    "nprogress": "~0.1.6"
+    "nprogress": "~0.1.6",
+    "typeahead.js-bootstrap3.less": "~0.2.3"
   }
 }
