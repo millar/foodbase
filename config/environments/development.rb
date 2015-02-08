@@ -40,4 +40,6 @@ Rails.application.configure do
   # config.action_view.raise_on_missing_translations = true
 
   config.action_mailer.default_url_options = { host: 'foodbase.dev' }
+
+  config.middleware.use Rack::Prerender, prerender_service_url: 'http://localhost:3000'
 end

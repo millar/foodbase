@@ -35,6 +35,8 @@ gem 'responders', '~> 2.0'
 
 gem 'devise'
 
+gem 'redis'
+
 gem 'ruby-units'
 
 # Use ActiveModel has_secure_password

@@ -77,5 +77,18 @@ Rails.application.configure do
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
 
-  config.middleware.use Rack::Prerender, prerender_service_url: 'http://localhost:3000'
+
+  require 'redis'
+  @redis = Redis.new
+
+  config.middleware.use Rack::Prerender,
+    prerender_service_url: 'http://localhost:3000',
+    protocol: 'https',
+    before_render: (Proc.new do |env|
+      @redis.get(Rack::Request.new(env).url)
+      @redis.expire(Rack::Request.new(env).url, 3600)
+    end),
+    after_render: (Proc.new do |env, response|
+      @redis.set(Rack::Request.new(env).url, response.body)
+    end)
 end
