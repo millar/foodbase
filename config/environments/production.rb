@@ -85,10 +85,10 @@ Rails.application.configure do
     prerender_service_url: 'http://localhost:3000',
     protocol: 'https',
     before_render: (Proc.new do |env|
-      @redis.expire(Rack::Request.new(env).url, 3600)
       @redis.get(Rack::Request.new(env).url)
     end),
     after_render: (Proc.new do |env, response|
       @redis.set(Rack::Request.new(env).url, response.body)
+      @redis.expire(Rack::Request.new(env).url, 3600)
     end)
 end
