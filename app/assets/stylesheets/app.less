@@ -96,6 +96,25 @@ footer {
   }
 }
 
+@media (max-width: 767px) {
+  footer {
+    position: static;
+    width: 100%;
+    line-height: 32px;
+    padding: 10px 0;
+    margin-top: 20px;
+
+    &, .text-right {
+      text-align: center;
+    }
+  }
+
+  body {
+    margin-bottom: 0;
+    padding-bottom: 0;
+  }
+}
+
 a[ng-click] {
   cursor: pointer;
 }
@@ -554,4 +573,46 @@ input.blank-input {
   margin: 0;
   outline: none !important;
   background: transparent;
+}
+
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+  display: none !important;
+}
+
+#alerts, #alerts-placeholder {
+  text-align: center;
+  cursor: pointer;
+
+  > div {
+    padding: 15px 0;
+    margin-top: -1px;
+    border-width: 1px 0 0;
+    border-style: solid;
+    border-color: rgba(0,0,0, 0.08);
+  }
+
+  .animate-repeat.ng-move,
+  .animate-repeat.ng-enter,
+  .animate-repeat.ng-leave {
+    .transition(~"padding ease-out 0.02s, height ease-out 0.02s");
+  }
+
+  .animate-repeat.ng-leave.ng-leave-active,
+  .animate-repeat.ng-move,
+  .animate-repeat.ng-enter {
+    height: 0;
+    padding: 0;
+    color: transparent;
+  }
+
+  .animate-repeat.ng-leave,
+  .animate-repeat.ng-move.ng-move-active,
+  .animate-repeat.ng-enter.ng-enter-active {
+    height: auto;
+    padding: 15px 0;
+  }
+}
+
+#alerts-placeholder {
+  visibility: hidden;
 }

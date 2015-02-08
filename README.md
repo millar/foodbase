@@ -1,7 +1,7 @@
 Foodbase
 ========
 
-[![Build Status](https://magnum.travis-ci.com/millar/foodbase.svg?token=rfm6MoJCPqDxnzTabbCB)](https://magnum.travis-ci.com/millar/foodbase)
+[![Build Status](https://travis-ci.org/millar/foodbase.svg)](https://travis-ci.org/millar/foodbase)
 
 A work in progress application for planning meals to generate shopping lists.
 
@@ -17,6 +17,12 @@ Then all gems must be installed via [Bundler](http://bundler.io/):
 
 ```sh
 bundle install
+```
+
+A few environment variables must also be set:
+
+```sh
+export SECRET_KEY_BASE='random string of characters'
 ```
 
 The application can then be [deployed](http://rubyonrails.org/deploy/) like any Rails application.

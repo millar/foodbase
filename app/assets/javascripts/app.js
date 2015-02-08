@@ -27,14 +27,20 @@ angular.module('app', window.$app.registry)
       }
     }])
 
-  .controller('MainController', ['$scope', '$rootScope', '$http', '$location',
-    function($scope, $rootScope, $http, $location){
+  .controller('MainController', ['$scope', '$rootScope', '$http', '$location', '$sce',
+    function($scope, $rootScope, $http, $location, $sce){
       $scope.logout = function(){
         $http.delete('/api/users/sign_out.json', {})
           .success(function(){
             $rootScope.current_user = null;
             $rootScope.current_player = null;
             $location.path('/');
+
+            $scope.alert({
+              name: 'login-status',
+              body: "You have been logged out.",
+              css: "alert-info"
+            });
           })
       }
 
@@ -53,6 +59,30 @@ angular.module('app', window.$app.registry)
       $(window).resize(function(){
         $scope.$broadcast('resize');
       });
+
+      $scope.alerts = [];
+
+      $scope.alert = function(obj){
+        if (obj.name){
+          $scope.removeAlert(obj.name);
+        }
+
+        if ($scope.alerts.length >= 5) $scope.alerts.shift();
+
+        obj.body = $sce.trustAsHtml(obj.body);
+
+        $scope.alerts.push(obj);
+      };
+
+      $scope.removeAlert = function(name){
+        $.each($scope.alerts, function(idx, alert){
+          if (alert && alert.name == name) $scope.alerts.splice(idx, 1);
+        })
+      };
+
+      if (!$rootScope.current_user){
+        $scope.alert({name: 'preview-release', body: "Foodbase is not yet released. This preview is publicly available but features may be broken or missing!", css: "alert-danger"});
+      }
     }])
 
   .run(['$rootScope',

@@ -29,6 +29,13 @@
   <body ng-app="app">
     <div ng-controller="MainController">
       <div class="navbar navbar-inverse navbar-fixed-top" role="navigation" id="navbar">
+        <div id="alerts">
+          <div ng-repeat="alert in alerts track by $index" ng-click="alerts.splice($index, 1)" class="animate-repeat {{alert.css}}">
+            <div class="container">
+              <span ng-bind-html="alert.body"></span>
+            </div>
+          </div>
+        </div>
         <div class="container">
           <div class="navbar-header">
             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
@@ -65,6 +72,14 @@
                 </ul>
               </li>
             </ul>
+          </div>
+        </div>
+      </div>
+
+      <div id="alerts-placeholder">
+        <div ng-repeat="alert in alerts track by $index"class="animate-repeat {{alert.css}}">
+          <div class="container">
+            <span ng-bind-html="alert.body"></span>
           </div>
         </div>
       </div>

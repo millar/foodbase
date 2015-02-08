@@ -26,6 +26,13 @@ angular.module('users', [])
             .success(function(user){
               $rootScope.current_user = user;
               $location.path('/home');
+
+              $scope.removeAlert('preview-release');
+              $scope.alert({
+                name: 'login-status',
+                body: "Welcome to Foodbase, " + user.username + '.',
+                css: "alert-success"
+              });
             })
             .error(function(response){
               $scope.errors = response.errors;
@@ -44,6 +51,13 @@ angular.module('users', [])
             $rootScope.current_user = user;
 
             $location.path('/home');
+
+            $scope.removeAlert('preview-release');
+            $scope.alert({
+              name: 'login-status',
+              body: "Welcome back " + user.username + '.',
+              css: "alert-success"
+            });
           })
           .error(function(response){
             $scope.failed = true;
