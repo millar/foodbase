@@ -10,7 +10,9 @@ angular.module('dashboard', [])
         });
     }])
 
-  .controller('HomeIndexController', ['$scope',
-    function($scope) {
-
+  .controller('HomeIndexController', ['$scope', 'Food',
+    function($scope, Food) {
+      // $scope.latestFoods = Food.query({limit: 6}, function(){
+      //   $scope.loaded = true;
+      // });
     }])

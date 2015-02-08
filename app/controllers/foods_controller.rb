@@ -1,9 +1,13 @@
 class FoodsController < ApplicationController
   def index
-    @foods = Food.all
+    @foods = Food.order(id: :desc)
 
     if params[:name]
       @foods = @foods.where("name LIKE ?", "%#{params[:name]}%")
+    end
+
+    if params[:limit]
+      @foods = @foods.limit(params[:limit])
     end
 
     respond_with @foods
