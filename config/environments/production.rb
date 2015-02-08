@@ -81,12 +81,11 @@ Rails.application.configure do
   require 'redis'
   @redis = Redis.new
 
-  @redis.expire(Rack::Request.new(env).url, 3600)
-
   config.middleware.use Rack::Prerender,
     prerender_service_url: 'http://localhost:3000',
     protocol: 'https',
     before_render: (Proc.new do |env|
+      @redis.expire(Rack::Request.new(env).url, 3600)
       @redis.get(Rack::Request.new(env).url)
     end),
     after_render: (Proc.new do |env, response|
