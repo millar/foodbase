@@ -43,6 +43,8 @@ gem 'ruby-units'
 # Use Unicorn as the app server
 gem 'unicorn', group: :production
 
+gem 'prerender_rails'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 

@@ -109,6 +109,9 @@ GEM
     nokogiri (1.6.5)
       mini_portile (~> 0.6.0)
     orm_adapter (0.5.0)
+    prerender_rails (1.1.2)
+      activesupport
+      rack
     rack (1.6.0)
     rack-test (0.6.3)
       rack (>= 1.0)
@@ -231,6 +234,7 @@ DEPENDENCIES
   less-rails-bootstrap
   mailgun_rails
   mysql2
+  prerender_rails
   rails (= 4.2.0)
   responders (~> 2.0)
   rspec-rails (~> 3.0)
