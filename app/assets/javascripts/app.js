@@ -6,7 +6,10 @@ window.$app.registry = [
   'ngAnimate',
 
   'directives',
-  'services'
+  'services',
+
+  'angulartics',
+  'angulartics.google.analytics'
 ];
 
 angular.module('app', window.$app.registry)

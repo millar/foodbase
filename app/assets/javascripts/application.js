@@ -22,6 +22,9 @@
 //
 //= require nprogress/nprogress
 //
+//= require angulartics/src/angulartics
+//= require angulartics/src/angulartics-ga
+//
 //= require directives
 //= require services
 //= require app
