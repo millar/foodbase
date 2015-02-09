@@ -26,3 +26,4 @@ lib/capistrano
 
 .powenv
 .rbenv-vars
+newrelic.yml

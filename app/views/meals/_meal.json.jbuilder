@@ -1,4 +1,4 @@
-json.(meal, :id, :title, :serves, :time, :created_at, :updated_at, :active)
+json.(meal, :id, :title, :serves, :time, :created_at, :updated_at, :active, :public)
 
 json.ingredients do
   json.array! meal.ingredients, partial: 'ingredients/ingredient', as: :ingredient

@@ -42,6 +42,12 @@ angular.module('meals', [])
     function($scope, $http, $routeParams, Meal) {
       $scope.meal = Meal.get({id: $routeParams.id}, function(){$scope.loaded = true});
 
+      $scope.togglePublic = function(){
+        $scope.meal.$update({public: !$scope.meal.public}, function(){
+          $scope.meal.public = !$scope.meal.public;
+        })
+      };
+
       $scope.delete = function(){
         $scope.meal.$delete(function(){
           $scope.meal.active = false;
@@ -60,6 +66,7 @@ angular.module('meals', [])
       $scope.requireLogin();
 
       $scope.meal = {
+        public: true,
         ingredients: [{}, {}, {}]
       };
 

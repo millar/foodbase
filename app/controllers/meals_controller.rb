@@ -36,6 +36,7 @@ class MealsController < ApplicationController
     meal.time = meal_params['time']
     meal.title = meal_params['title']
     meal.notes = meal_params['notes']
+    meal.public = meal_params['public']
     meal.ingredients = ingredients
     meal.save
 
@@ -66,6 +67,7 @@ class MealsController < ApplicationController
     @meal.time = meal_params['time']
     @meal.title = meal_params['title']
     @meal.notes = meal_params['notes']
+    @meal.public = meal_params['public']
     @meal.ingredients = ingredients
     @meal.save
 

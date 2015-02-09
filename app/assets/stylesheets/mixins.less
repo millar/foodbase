@@ -1,1 +1,67 @@
 // Modified Bootstrap mixins
+
+// Panels
+
+.panel-variant(@border; @heading-text-color; @heading-bg-color; @heading-border) {
+  border: none;
+  margin-bottom: @line-height-computed;
+  .box-shadow(0 0.5px 4px rgba(0,0,0,.00));
+  border: 1px solid rgba(0,0,0, .1);
+  border-radius: 0 !important;
+
+  & > .panel-heading {
+    color: @heading-text-color;
+    background-color: @heading-bg-color;
+    border-color: @heading-border;
+    // border: none;
+    // padding-top: 18px;
+    // padding-bottom: 0;
+    // margin-bottom: -@panel-body-padding;
+
+    + .panel-collapse > .panel-body {
+      border-top-color: @border;
+    }
+    .badge {
+      color: @heading-bg-color;
+      background-color: @heading-text-color;
+    }
+  }
+  & > .panel-footer {
+    + .panel-collapse > .panel-body {
+      border-bottom-color: @border;
+    }
+  }
+}
+
+.panel-heading {
+  .panel-title {
+    font-size: 120%;
+  }
+}
+
+.panel-default > .panel-heading {
+  // #gradient > .vertical(#f3f3f3, #fff, 20%);
+}
+
+.panel-body {
+  .panel-title {
+    margin-bottom: (@line-height-computed / 2);
+    font-weight: 600;
+  }
+
+  h5.panel-title {
+    margin-bottom: (@line-height-computed / 2);
+    font-size: 100%;
+    font-weight: 600;
+  }
+}
+
+.panel-warning {
+  background: @state-warning-bg;
+}
+
+.text-overflow() {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}

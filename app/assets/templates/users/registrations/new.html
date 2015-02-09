@@ -11,6 +11,12 @@
   </div>
 </div>
 
+<div class="hero hero-warning hero-strip text-larger">
+  <div class="container text-center">
+    Foodbase is not yet released. This preview is publicly available but features may be broken or missing!
+  </div>
+</div>
+
 <div class="container">
 
   <form class="form-horizontal separated" name="userForm" ng-submit="save()">
@@ -21,11 +27,11 @@
       <div class="col-md-4">
         <input class="form-control" type="text" name="username" id="username"
           ng-model="user.username"
-          ng-required ng-pattern="/^[a-z0-9\-_]+([a-z0-9\-_ ]*[a-z0-9\-_]+)?$/i"
+          ng-required ng-pattern="/^[a-z0-9\-_]+$/i"
           ng-maxlength="16"
           ng-minlength="3">
           <span class="help-block">
-            Between 3 and 16 letters, numbers, spaces, - and _
+            Between 3 and 16 letters, numbers, - and _
           </span>
       </div>
     </div>

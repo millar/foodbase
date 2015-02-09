@@ -27,7 +27,6 @@ angular.module('users', [])
               $rootScope.current_user = user;
               $location.path('/home');
 
-              $scope.removeAlert('preview-release');
               $scope.alert({
                 name: 'login-status',
                 body: "Welcome to Foodbase, " + user.username + '.',
@@ -52,7 +51,6 @@ angular.module('users', [])
 
             $location.path('/home');
 
-            $scope.removeAlert('preview-release');
             $scope.alert({
               name: 'login-status',
               body: "Welcome back " + user.username + '.',

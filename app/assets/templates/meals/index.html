@@ -1,6 +1,6 @@
 <page-title>Your Meals</page-title>
 
-<div class="container">
+<!-- <div class="container">
   <div class="row">
     <div class="col-md-6 meal-column">
       <div class="page-header">
@@ -25,6 +25,91 @@
                         'other': '{} mins'}"></li>
           </ul>
         </div>
+      </loading-icon>
+    </div>
+  </div>
+</div> -->
+
+<!-- <div class="container">
+  <div class="page-header">
+    <h2 class="page-title">
+      <a class="btn btn-primary pull-right" href="/meals/new"><span class="octicon octicon-plus" style="font-size: 100%;"></span> New Meal</a>
+      Your Meals
+    </h2>
+  </div>
+</div> -->
+
+<div class="container separated">
+  <div class="row">
+    <!-- <div class="col-md-3">
+      <div class="list-group">
+        <a href="/meals" class="list-group-item">
+          <span class="sidenav-btn">Your Meals</span>
+        </a>
+        <a href="/meals/new" class="list-group-item">
+          <span class="sidenav-btn">
+            New Meal
+          </span>
+        </a>
+      </div>
+    </div> -->
+    <div class="col-md-9">
+      <!-- <div class="panel panel-default">
+        <div class="panel-body">
+          Filter
+        </div>
+      </div> -->
+
+      <loading-icon class="reveal-animation">
+        <div class="panel panel-default">
+          <!-- <div class="panel-heading">
+            <h3 class="panel-title">
+              All Meals
+            </h3>
+          </div> -->
+          <!-- <div class="panel-body">
+
+          </div> -->
+          <div class="list-group">
+            <div ng-repeat="meal in meals" class="list-group-item">
+              <h3><a ng-href="/meals/{{meal.id}}">{{meal.title}}</a></h3>
+              <ul class="list-inline">
+                <li ng-if="meal.serves">Serves {{meal.serves}}</li>
+                <li ng-if="meal.time">Takes <span ng-pluralize count="meal.time"
+                     when="{'one': '1 min',
+                            'other': '{} mins'}"></li>
+                <li ng-if="meal.public"><span class="octicon octicon-globe text-feint"></span></li>
+              </ul>
+              <div class="ingredients-inline">
+                <ul class="list-inline">
+                  <li ng-repeat="ingredient in topIngredients(meal)" class="text-muted">
+                    <a class="text-default" ng-href="/foods/{{ingredient.food_id}}">{{ingredient.food}}</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- <div class="rows">
+          <div ng-repeat="meal in meals">
+            <h3><a ng-href="/meals/{{meal.id}}">{{meal.title}}</a></h3>
+            <ul class="list-inline">
+              <li ng-if="meal.serves">Serves {{meal.serves}}</li>
+              <li ng-if="meal.time">Takes <span ng-pluralize count="meal.time"
+                   when="{'one': '1 min',
+                          'other': '{} mins'}"></li>
+              <li ng-if="meal.public"><span class="octicon octicon-globe text-feint"></span></li>
+            </ul>
+            <div class="ingredients-inline">
+              <ul class="list-inline">
+                <li ng-repeat="ingredient in topIngredients(meal)" class="text-muted">
+                  <a class="text-default" ng-href="/foods/{{ingredient.food_id}}">{{ingredient.food}}</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div> -->
       </loading-icon>
     </div>
   </div>

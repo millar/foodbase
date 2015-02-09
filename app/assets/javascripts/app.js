@@ -79,10 +79,6 @@ angular.module('app', window.$app.registry)
           if (alert && alert.name == name) $scope.alerts.splice(idx, 1);
         })
       };
-
-      if (!$rootScope.current_user){
-        $scope.alert({name: 'preview-release', body: "Foodbase is not yet released. This preview is publicly available but features may be broken or missing!", css: "alert-danger"});
-      }
     }])
 
   .run(['$rootScope',
