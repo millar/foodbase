@@ -28,7 +28,7 @@
   </head>
   <body ng-app="app">
     <div ng-controller="MainController">
-      <div class="navbar navbar-inverse navbar-fixed-top" role="navigation" id="navbar">
+      <div class="navbar navbar-inverse navbar-fixed-top" role="navigation" id="navbar" ng-cloak>
         <div id="alerts">
           <div ng-repeat="alert in alerts track by $index" ng-click="alerts.splice($index, 1)" class="animate-repeat {{alert.css}}">
             <div class="container">
